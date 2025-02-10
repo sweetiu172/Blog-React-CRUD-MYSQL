@@ -1,156 +1,175 @@
 #0 building with "default" instance using docker driver
 
-#1 [frontend internal] load build definition from Dockerfile
-#1 transferring dockerfile: 200B 0.0s done
+#1 [db internal] load build definition from Dockerfile.db
+#1 transferring dockerfile: 443B 0.0s done
 #1 DONE 0.0s
 
-#2 [backend internal] load build definition from Dockerfile
-#2 transferring dockerfile: 111B done
+#2 [db internal] load metadata for docker.io/library/mysql:8.0
 #2 DONE 0.0s
 
-#3 [backend internal] load metadata for docker.io/library/node:18
-#3 DONE 3.9s
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 200B 0.0s done
+#3 DONE 0.0s
 
-#4 [backend internal] load .dockerignore
-#4 transferring context: 2B 0.0s done
+#4 [db internal] load .dockerignore
+#4 transferring context: 2B done
 #4 DONE 0.0s
 
-#5 [frontend internal] load .dockerignore
-#5 transferring context: 61B 0.0s done
+#5 [db 1/3] FROM docker.io/library/mysql:8.0
 #5 DONE 0.0s
 
-#6 [frontend 1/3] FROM docker.io/library/node:18@sha256:f12d34408955b2081f82078e8f96c3299ca0f38d11e76086cb9b9b1b669977e4
+#6 [db internal] load build context
+#6 transferring context: 30B 0.0s done
 #6 DONE 0.0s
 
-#7 [frontend internal] load build context
-#7 transferring context: 4.84kB 0.0s done
-#7 DONE 0.0s
+#7 [db 2/3] COPY init.sql /docker-entrypoint-initdb.d
+#7 CACHED
 
-#8 [frontend 2/7] WORKDIR /app
+#8 [db 3/3] RUN ls -l
 #8 CACHED
 
-#9 [frontend 3/7] COPY . .
-#9 DONE 0.1s
+#9 [db] exporting to image
+#9 exporting layers done
+#9 writing image sha256:be6f1f39a6720caf7c579c803a7f6fc0b31a4c82f600c7f930ecf0d555544968 done
+#9 naming to docker.io/library/blog-react-crud-mysql-db done
+#9 DONE 0.0s
 
-#10 [backend internal] load build context
+#10 [frontend internal] load metadata for docker.io/library/node:18
 #10 ...
 
-#11 [frontend 4/7] RUN ls -l
-#11 0.288 total 588
-#11 0.288 -rwxrwxrwx 1 root root    161 Feb 10 11:52 Dockerfile
-#11 0.288 -rwxrwxrwx 1 root root   4129 Feb 10 11:55 docker.log
-#11 0.288 -rwxrwxrwx 1 root root   1004 Feb 10 11:21 package.json
-#11 0.288 drwxrwxrwx 2 root root   4096 Jan 11 09:01 public
-#11 0.288 drwxrwxrwx 3 root root   4096 Jan 11 09:01 src
-#11 0.288 -rwxrwxrwx 1 root root 577347 Feb 10 11:21 yarn.lock
-#11 DONE 0.3s
+#11 [backend internal] load build definition from Dockerfile
+#11 transferring dockerfile: 211B 0.0s done
+#11 DONE 0.0s
 
-#10 [backend internal] load build context
-#10 transferring context: 70.95kB 3.4s done
-#10 DONE 3.5s
+#10 [backend internal] load metadata for docker.io/library/node:18
+#10 DONE 1.7s
 
-#12 [frontend 5/7] RUN yarn && yarn build
-#12 0.668 yarn install v1.22.22
-#12 0.732 [1/4] Resolving packages...
-#12 0.998 [2/4] Fetching packages...
-#12 ...
+#12 [backend internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
 
-#13 [backend 2/3] COPY . .
-#13 CACHED
+#13 [frontend internal] load .dockerignore
+#13 transferring context: 61B 0.0s done
+#13 DONE 0.0s
 
-#14 [backend 3/3] RUN yarn
-#14 CACHED
+#14 [frontend 1/3] FROM docker.io/library/node:18@sha256:f12d34408955b2081f82078e8f96c3299ca0f38d11e76086cb9b9b1b669977e4
+#14 DONE 0.0s
 
-#15 [backend] exporting to image
-#15 exporting layers done
-#15 writing image sha256:20852a231227bc29c8552e34b3a09367978b0abe50883e2590f79f1c520f8692 done
-#15 naming to docker.io/library/blog-react-crud-mysql-backend done
-#15 DONE 0.0s
+#15 [frontend internal] load build context
+#15 transferring context: 813B 0.0s done
+#15 DONE 0.1s
 
-#12 [frontend 5/7] RUN yarn && yarn build
-#12 22.63 [3/4] Linking dependencies...
-#12 22.63 warning " > @testing-library/user-event@12.8.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
-#12 22.63 warning "react-scripts > @typescript-eslint/eslint-plugin > tsutils@3.21.0" has unmet peer dependency "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta".
-#12 30.77 [4/4] Building fresh packages...
-#12 31.69 Done in 31.02s.
-#12 31.82 yarn run v1.22.22
-#12 31.84 $ export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build
-#12 32.65 Creating an optimized production build...
-#12 35.46 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
-#12 35.46 "@babel/plugin-proposal-private-property-in-object" package without
-#12 35.46 declaring it in its dependencies. This is currently working because
-#12 35.46 "@babel/plugin-proposal-private-property-in-object" is already in your
-#12 35.46 node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
-#12 35.46 
-#12 35.46 babel-preset-react-app is part of the create-react-app project, [1mwhich
-#12 35.46 is not maintianed anymore[0;33m. It is thus unlikely that this bug will
-#12 35.46 ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
-#12 35.46 your devDependencies to work around this error. This will make this message
-#12 35.46 go away.[0m
-#12 35.46   
-#12 36.61 Compiled successfully.
-#12 36.61 
-#12 36.61 File sizes after gzip:
-#12 36.61 
-#12 36.62   56.1 KB  build/static/js/2.64bbef6a.chunk.js
-#12 36.62   1.05 KB  build/static/js/main.48ea3ddf.chunk.js
-#12 36.62   815 B    build/static/css/main.16c488e5.chunk.css
-#12 36.62   773 B    build/static/js/runtime-main.67edd9e0.js
-#12 36.62 
-#12 36.62 The project was built assuming it is hosted at /.
-#12 36.62 You can control this with the homepage field in your package.json.
-#12 36.62 
-#12 36.62 The build folder is ready to be deployed.
-#12 36.62 You may serve it with a static server:
-#12 36.62 
-#12 36.62   yarn global add serve
-#12 36.62   serve -s build
-#12 36.62 
-#12 36.62 Find out more about deployment here:
-#12 36.62 
-#12 36.62   https://cra.link/deployment
-#12 36.62 
-#12 36.64 Done in 4.82s.
-#12 DONE 36.9s
+#16 [backend internal] load build context
+#16 ...
 
-#16 [frontend 6/7] RUN npm install serve -g
-#16 4.696 
-#16 4.696 added 88 packages in 4s
-#16 4.696 
-#16 4.696 24 packages are looking for funding
-#16 4.696   run `npm fund` for details
-#16 4.697 npm notice
-#16 4.697 npm notice New major version of npm available! 10.8.2 -> 11.1.0
-#16 4.697 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.1.0
-#16 4.697 npm notice To update run: npm install -g npm@11.1.0
-#16 4.697 npm notice
-#16 DONE 4.8s
+#17 [frontend 3/7] COPY . .
+#17 CACHED
 
-#17 [frontend 7/7] RUN which serve
-#17 0.377 /usr/local/bin/serve
-#17 DONE 0.4s
+#18 [frontend 4/7] RUN ls -l
+#18 CACHED
 
-#18 [frontend] exporting to image
-#18 exporting layers
-#18 exporting layers 4.3s done
-#18 writing image sha256:a2786a39205fbfbf45241bca36d690ddc6fae4df910ef593a83105eef61a9c99 done
-#18 naming to docker.io/library/blog-react-crud-mysql-frontend done
-#18 DONE 4.3s
+#19 [frontend 5/7] RUN yarn && yarn build
+#19 CACHED
+
+#20 [frontend 6/7] RUN npm install serve -g
+#20 CACHED
+
+#21 [frontend 2/7] WORKDIR /app
+#21 CACHED
+
+#22 [frontend 7/7] RUN which serve
+#22 CACHED
+
+#23 [frontend] exporting to image
+#23 exporting layers done
+#23 writing image sha256:b53b0b6c7e8cb1fc8dc84d0f385c6fd1d28edeb1b3caf34bd097488a90ef1337 done
+#23 naming to docker.io/library/blog-react-crud-mysql-frontend done
+#23 DONE 0.0s
+
+#16 [backend internal] load build context
+#16 transferring context: 71.14kB 3.4s done
+#16 DONE 3.4s
+
+#24 [backend 2/3] COPY . .
+#24 CACHED
+
+#25 [backend 3/3] RUN yarn
+#25 CACHED
+
+#26 [backend] exporting to image
+#26 exporting layers done
+#26 writing image sha256:735b2bc5602526366b570bce9ed04af371760c7031a71f745403becd3a7c2027 done
+#26 naming to docker.io/library/blog-react-crud-mysql-backend done
+#26 DONE 0.0s
+ Network blog-react-crud-mysql_default  Creating
+ Network blog-react-crud-mysql_default  Created
  Container frontend  Creating
- Container backend  Creating
+ Container mysql57-container  Creating
+ Container mysql8  Creating
+ Container frontend  Created
  Container mysql57-container  Created
  Container mysql8  Created
+ Container backend  Creating
  Container backend  Created
- Container frontend  Created
 Attaching to backend, frontend, mysql57-container, mysql8
+mysql57-container  | 2025-02-10 15:39:33+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
+mysql57-container  | 2025-02-10 15:39:33+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql57-container  | 2025-02-10 15:39:33+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
+mysql57-container  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysql57-container  | 2025-02-10T15:39:34.117466Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+mysql57-container  | 2025-02-10T15:39:34.118751Z 0 [Note] mysqld (mysqld 5.7.44) starting as process 1 ...
+mysql57-container  | 2025-02-10T15:39:34.120682Z 0 [Note] InnoDB: PUNCH HOLE support available
+mysql57-container  | 2025-02-10T15:39:34.120707Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql57-container  | 2025-02-10T15:39:34.120710Z 0 [Note] InnoDB: Uses event mutexes
+mysql57-container  | 2025-02-10T15:39:34.120711Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+mysql57-container  | 2025-02-10T15:39:34.120713Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.13
+mysql57-container  | 2025-02-10T15:39:34.120715Z 0 [Note] InnoDB: Using Linux native AIO
+mysql57-container  | 2025-02-10T15:39:34.121006Z 0 [Note] InnoDB: Number of pools: 1
+mysql57-container  | 2025-02-10T15:39:34.121168Z 0 [Note] InnoDB: Using CPU crc32 instructions
+mysql57-container  | 2025-02-10T15:39:34.122429Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+mysql57-container  | 2025-02-10T15:39:34.126774Z 0 [Note] InnoDB: Completed initialization of buffer pool
+mysql8             | 2025-02-10 15:39:34+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.41-1.el9 started.
+mysql57-container  | 2025-02-10T15:39:34.128200Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+mysql57-container  | 2025-02-10T15:39:34.139817Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+mysql57-container  | 2025-02-10T15:39:34.150328Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+mysql57-container  | 2025-02-10T15:39:34.150377Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+mysql57-container  | 2025-02-10T15:39:34.165413Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+mysql57-container  | 2025-02-10T15:39:34.165961Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+mysql57-container  | 2025-02-10T15:39:34.165989Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+mysql57-container  | 2025-02-10T15:39:34.166802Z 0 [Note] InnoDB: 5.7.44 started; log sequence number 12272941
+mysql57-container  | 2025-02-10T15:39:34.167592Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+mysql57-container  | 2025-02-10T15:39:34.167791Z 0 [Note] Plugin 'FEDERATED' is disabled.
+mysql57-container  | 2025-02-10T15:39:34.168743Z 0 [Note] InnoDB: Buffer pool(s) load completed at 250210 15:39:34
+mysql57-container  | 2025-02-10T15:39:34.171202Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+mysql57-container  | 2025-02-10T15:39:34.171230Z 0 [Note] Skipping generation of SSL certificates as certificate files are present in data directory.
+mysql57-container  | 2025-02-10T15:39:34.171234Z 0 [Warning] A deprecated TLS version TLSv1 is enabled. Please use TLSv1.2 or higher.
+mysql57-container  | 2025-02-10T15:39:34.171236Z 0 [Warning] A deprecated TLS version TLSv1.1 is enabled. Please use TLSv1.2 or higher.
+mysql57-container  | 2025-02-10T15:39:34.171613Z 0 [Warning] CA certificate ca.pem is self signed.
+mysql57-container  | 2025-02-10T15:39:34.171649Z 0 [Note] Skipping generation of RSA key pair as key files are present in data directory.
+mysql57-container  | 2025-02-10T15:39:34.171804Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+mysql57-container  | 2025-02-10T15:39:34.171843Z 0 [Note] IPv6 is available.
+mysql57-container  | 2025-02-10T15:39:34.171851Z 0 [Note]   - '::' resolves to '::';
+mysql57-container  | 2025-02-10T15:39:34.171861Z 0 [Note] Server socket created on IP: '::'.
+mysql57-container  | 2025-02-10T15:39:34.177997Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql57-container  | 2025-02-10T15:39:34.183132Z 0 [Note] Event Scheduler: Loaded 0 events
+mysql57-container  | 2025-02-10T15:39:34.183574Z 0 [Note] mysqld: ready for connections.
+mysql57-container  | Version: '5.7.44'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+mysql8             | 2025-02-10 15:39:34+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql8             | 2025-02-10 15:39:34+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.41-1.el9 started.
+mysql8             | 2025-02-10 15:39:34+00:00 [Note] [Entrypoint]: Initializing database files
+mysql8             | 2025-02-10T15:39:34.331702Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
+mysql8             | 2025-02-10T15:39:34.331761Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.41) initializing of server in progress as process 80
+mysql8             | 2025-02-10T15:39:34.363418Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+frontend           |  INFO  Accepting connections at http://localhost:3000
 backend            | yarn run v1.22.22
 backend            | $ node index.js
+backend            | mysql8
 backend            | Server is running on 3002
 backend            | node:events:495
 backend            |       throw er; // Unhandled 'error' event
 backend            |       ^
 backend            | 
-backend            | Error: connect ECONNREFUSED 127.0.0.1:3305
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
 backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
 backend            | Emitted 'error' event on Connection instance at:
 backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
@@ -163,85 +182,250 @@ backend            |     at process.processTicksAndRejections (node:internal/pro
 backend            |   errno: -111,
 backend            |   code: 'ECONNREFUSED',
 backend            |   syscall: 'connect',
-backend            |   address: '127.0.0.1',
-backend            |   port: 3305,
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
 backend            |   fatal: true
 backend            | }
 backend            | 
 backend            | Node.js v18.20.6
 backend            | error Command failed with exit code 1.
 backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-mysql57-container  | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
-mysql8             | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.40-1.el9 started.
-mysql57-container  | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-mysql57-container  | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
-mysql8             | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-mysql8             | 2025-02-10 12:00:32+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.40-1.el9 started.
-mysql57-container  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-frontend           |  INFO  Accepting connections at http://localhost:3000
-mysql8             | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysql8             | 2025-02-10T15:39:35.660691Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+backend exited with code 0
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+backend exited with code 0
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+backend exited with code 0
+mysql8             | 2025-02-10T15:39:38.197645Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 backend exited with code 1
-mysql57-container  | 2025-02-10T12:00:32.922628Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
-mysql57-container  | 2025-02-10T12:00:32.923463Z 0 [Note] mysqld (mysqld 5.7.44) starting as process 1 ...
-mysql57-container  | 2025-02-10T12:00:32.926136Z 0 [Note] InnoDB: PUNCH HOLE support available
-mysql57-container  | 2025-02-10T12:00:32.926166Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
-mysql57-container  | 2025-02-10T12:00:32.926168Z 0 [Note] InnoDB: Uses event mutexes
-mysql57-container  | 2025-02-10T12:00:32.926169Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
-mysql57-container  | 2025-02-10T12:00:32.926170Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.13
-mysql57-container  | 2025-02-10T12:00:32.926172Z 0 [Note] InnoDB: Using Linux native AIO
-mysql57-container  | 2025-02-10T12:00:32.927012Z 0 [Note] InnoDB: Number of pools: 1
-mysql57-container  | 2025-02-10T12:00:32.928813Z 0 [Note] InnoDB: Using CPU crc32 instructions
-mysql57-container  | 2025-02-10T12:00:32.929901Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
-mysql57-container  | 2025-02-10T12:00:32.934509Z 0 [Note] InnoDB: Completed initialization of buffer pool
-mysql57-container  | 2025-02-10T12:00:32.936232Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
-mysql57-container  | 2025-02-10T12:00:32.953160Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
-mysql57-container  | 2025-02-10T12:00:32.974362Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
-mysql57-container  | 2025-02-10T12:00:32.974445Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
-mysql57-container  | 2025-02-10T12:00:32.989735Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
-mysql57-container  | 2025-02-10T12:00:32.990209Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
-mysql57-container  | 2025-02-10T12:00:32.990238Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
-mysql57-container  | 2025-02-10T12:00:32.991283Z 0 [Note] InnoDB: Waiting for purge to start
-mysql57-container  | 2025-02-10T12:00:33.041498Z 0 [Note] InnoDB: 5.7.44 started; log sequence number 12270921
-mysql57-container  | 2025-02-10T12:00:33.042260Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
-mysql57-container  | 2025-02-10T12:00:33.042560Z 0 [Note] Plugin 'FEDERATED' is disabled.
-mysql8             | 2025-02-10T12:00:33.047211Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
-mysql8             | 2025-02-10T12:00:33.048667Z 0 [Warning] [MY-010918] [Server] 'default_authentication_plugin' is deprecated and will be removed in a future release. Please use authentication_policy instead.
-mysql8             | 2025-02-10T12:00:33.049716Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.40) starting as process 1
-mysql57-container  | 2025-02-10T12:00:33.058220Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
-mysql57-container  | 2025-02-10T12:00:33.058243Z 0 [Note] Skipping generation of SSL certificates as certificate files are present in data directory.
-mysql57-container  | 2025-02-10T12:00:33.058247Z 0 [Warning] A deprecated TLS version TLSv1 is enabled. Please use TLSv1.2 or higher.
-mysql57-container  | 2025-02-10T12:00:33.058248Z 0 [Warning] A deprecated TLS version TLSv1.1 is enabled. Please use TLSv1.2 or higher.
-mysql57-container  | 2025-02-10T12:00:33.059180Z 0 [Note] InnoDB: Buffer pool(s) load completed at 250210 12:00:33
-mysql57-container  | 2025-02-10T12:00:33.059742Z 0 [Warning] CA certificate ca.pem is self signed.
-mysql57-container  | 2025-02-10T12:00:33.059781Z 0 [Note] Skipping generation of RSA key pair as key files are present in data directory.
-mysql8             | 2025-02-10T12:00:33.060349Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-mysql57-container  | 2025-02-10T12:00:33.060439Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
-mysql57-container  | 2025-02-10T12:00:33.060483Z 0 [Note] IPv6 is available.
-mysql57-container  | 2025-02-10T12:00:33.060492Z 0 [Note]   - '::' resolves to '::';
-mysql57-container  | 2025-02-10T12:00:33.060511Z 0 [Note] Server socket created on IP: '::'.
-mysql57-container  | 2025-02-10T12:00:33.064968Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-mysql57-container  | 2025-02-10T12:00:33.140352Z 0 [Note] Event Scheduler: Loaded 0 events
-mysql57-container  | 2025-02-10T12:00:33.140637Z 0 [Note] mysqld: ready for connections.
-mysql57-container  | Version: '5.7.44'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
-mysql8             | 2025-02-10T12:00:33.491046Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-mysql8             | 2025-02-10T12:00:33.805168Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-mysql8             | 2025-02-10T12:00:33.805207Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-mysql8             | 2025-02-10T12:00:33.813713Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-mysql8             | 2025-02-10T12:00:33.867563Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-mysql8             | 2025-02-10T12:00:33.867650Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.40'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+backend exited with code 1
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+backend exited with code 1
+mysql8             | 2025-02-10 15:39:44+00:00 [Note] [Entrypoint]: Database files initialized
+mysql8             | 2025-02-10 15:39:44+00:00 [Note] [Entrypoint]: Starting temporary server
+mysql8             | 2025-02-10T15:39:44.254862Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
+mysql8             | 2025-02-10T15:39:44.255639Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.41) starting as process 124
+mysql8             | 2025-02-10T15:39:44.267215Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql8             | 2025-02-10T15:39:44.611379Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql8             | 2025-02-10T15:39:44.942437Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql8             | 2025-02-10T15:39:44.942481Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql8             | 2025-02-10T15:39:44.948031Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql8             | 2025-02-10T15:39:44.976659Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+mysql8             | 2025-02-10T15:39:44.976862Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.41'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+mysql8             | 2025-02-10 15:39:44+00:00 [Note] [Entrypoint]: Temporary server started.
+mysql8             | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/leapseconds' as time zone. Skipping it.
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
+backend            | node:events:495
+backend            |       throw er; // Unhandled 'error' event
+backend            |       ^
+backend            | 
+backend            | Error: connect ECONNREFUSED 192.168.160.4:3306
+backend            |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+backend            | Emitted 'error' event on Connection instance at:
+backend            |     at Connection._notifyError (/node_modules/mysql2/lib/base/connection.js:247:12)
+backend            |     at Connection._handleFatalError (/node_modules/mysql2/lib/base/connection.js:178:10)
+backend            |     at Connection._handleNetworkError (/node_modules/mysql2/lib/base/connection.js:191:10)
+backend            |     at Socket.emit (node:events:517:28)
+backend            |     at emitErrorNT (node:internal/streams/destroy:151:8)
+backend            |     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+backend            |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+backend            |   errno: -111,
+backend            |   code: 'ECONNREFUSED',
+backend            |   syscall: 'connect',
+backend            |   address: '192.168.160.4',
+backend            |   port: 3306,
+backend            |   fatal: true
+backend            | }
+backend            | 
+backend            | Node.js v18.20.6
+backend            | error Command failed with exit code 1.
+backend            | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/tzdata.zi' as time zone. Skipping it.
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+mysql8             | Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+mysql8             | 2025-02-10 15:39:46+00:00 [Note] [Entrypoint]: Creating database blog_posts
+mysql8             | 2025-02-10 15:39:46+00:00 [Note] [Entrypoint]: Creating user tuan
+mysql8             | 2025-02-10 15:39:46+00:00 [Note] [Entrypoint]: Giving user tuan access to schema blog_posts
+mysql8             | 
+mysql8             | 2025-02-10 15:39:46+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
+mysql8             | 
+mysql8             | 
+mysql8             | 2025-02-10 15:39:46+00:00 [Note] [Entrypoint]: Stopping temporary server
+mysql8             | 2025-02-10T15:39:46.751323Z 14 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.41).
+backend exited with code 1
+mysql8             | 2025-02-10T15:39:49.204931Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.41)  MySQL Community Server - GPL.
+mysql8             | 2025-02-10 15:39:49+00:00 [Note] [Entrypoint]: Temporary server stopped
+mysql8             | 
+mysql8             | 2025-02-10 15:39:49+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+mysql8             | 
+mysql8             | 2025-02-10T15:39:49.929863Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
+mysql8             | 2025-02-10T15:39:49.930439Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.41) starting as process 1
+mysql8             | 2025-02-10T15:39:49.935784Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql8             | 2025-02-10T15:39:50.228005Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql8             | 2025-02-10T15:39:50.470334Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql8             | 2025-02-10T15:39:50.470371Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql8             | 2025-02-10T15:39:50.474976Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql8             | 2025-02-10T15:39:50.492270Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+mysql8             | 2025-02-10T15:39:50.492507Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.41'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+backend            | yarn run v1.22.22
+backend            | $ node index.js
+backend            | mysql8
+backend            | Server is running on 3002
 Gracefully stopping... (press Ctrl+C again to force)
- Container mysql57-container  Stopping
- Container backend  Stopping
- Container mysql8  Stopping
  Container frontend  Stopping
- Container backend  Stopped
- Container mysql57-container  Killing
- Container frontend  Killing
- Container mysql8  Killing
+ Container backend  Stopping
+ Container mysql57-container  Stopping
  Container frontend  Stopped
- Container frontend  Error while Killing
- Container mysql57-container  Error while Killing
- Container mysql8  Error while Killing
- Container mysql57-container  Stopped
+ Container backend  Stopped
+ Container mysql8  Stopping
  Container mysql8  Stopped
+ Container mysql57-container  Stopped
 canceled

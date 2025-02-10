@@ -4,5 +4,10 @@ COPY . .
 
 RUN yarn
 
+ENV MYSQL_HOST=mysql8
+ENV MYSQL_USER=tuan
+ENV MYSQL_PASSWORD=123456
+ENV MYSQL_DB=blog_posts
+
 EXPOSE 3002
 CMD ["yarn", "start"]

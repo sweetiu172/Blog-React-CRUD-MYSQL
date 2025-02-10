@@ -77,5 +77,6 @@ console.log(err)
 
 
 app.listen(PORT, ()=>{
+    console.log(process.env.MYSQL_HOST)
     console.log(`Server is running on ${PORT}`)
 })

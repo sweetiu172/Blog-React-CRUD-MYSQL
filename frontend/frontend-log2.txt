@@ -1,0 +1,106 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 292B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18
+#2 DONE 0.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 61B done
+#3 DONE 0.0s
+
+#4 [builder 1/4] FROM docker.io/library/node:18@sha256:f12d34408955b2081f82078e8f96c3299ca0f38d11e76086cb9b9b1b669977e4
+#4 DONE 0.0s
+
+#5 [builder 2/4] WORKDIR /app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 1.02kB 0.0s done
+#6 DONE 0.0s
+
+#7 [builder 3/4] COPY . .
+#7 DONE 0.0s
+
+#8 [builder 4/4] RUN yarn && yarn build
+#8 0.445 yarn install v1.22.22
+#8 0.508 [1/4] Resolving packages...
+#8 0.762 [2/4] Fetching packages...
+#8 28.97 [3/4] Linking dependencies...
+#8 28.97 warning " > @testing-library/user-event@12.8.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+#8 28.97 warning "react-scripts > @typescript-eslint/eslint-plugin > tsutils@3.21.0" has unmet peer dependency "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta".
+#8 37.53 [4/4] Building fresh packages...
+#8 38.45 Done in 38.01s.
+#8 38.60 yarn run v1.22.22
+#8 38.61 $ export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build
+#8 39.45 Creating an optimized production build...
+#8 42.25 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
+#8 42.25 "@babel/plugin-proposal-private-property-in-object" package without
+#8 42.25 declaring it in its dependencies. This is currently working because
+#8 42.25 "@babel/plugin-proposal-private-property-in-object" is already in your
+#8 42.25 node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+#8 42.25 
+#8 42.25 babel-preset-react-app is part of the create-react-app project, [1mwhich
+#8 42.25 is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+#8 42.25 ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+#8 42.25 your devDependencies to work around this error. This will make this message
+#8 42.25 go away.[0m
+#8 42.25   
+#8 43.53 Compiled successfully.
+#8 43.53 
+#8 43.53 File sizes after gzip:
+#8 43.53 
+#8 43.54   56.1 KB  build/static/js/2.64bbef6a.chunk.js
+#8 43.54   1.05 KB  build/static/js/main.4ef62871.chunk.js
+#8 43.54   815 B    build/static/css/main.16c488e5.chunk.css
+#8 43.54   773 B    build/static/js/runtime-main.67edd9e0.js
+#8 43.54 
+#8 43.54 The project was built assuming it is hosted at /.
+#8 43.54 You can control this with the homepage field in your package.json.
+#8 43.54 
+#8 43.54 The build folder is ready to be deployed.
+#8 43.54 You may serve it with a static server:
+#8 43.54 
+#8 43.54   yarn global add serve
+#8 43.54   serve -s build
+#8 43.54 
+#8 43.54 Find out more about deployment here:
+#8 43.54 
+#8 43.54   https://cra.link/deployment
+#8 43.54 
+#8 43.57 Done in 4.98s.
+#8 DONE 44.2s
+
+#9 [stage-1 3/6] COPY --from=builder /app/build /app/build
+#9 DONE 0.1s
+
+#10 [stage-1 4/6] RUN ls -l
+#10 0.306 total 4
+#10 0.306 drwxr-xr-x 3 root root 4096 Feb 10 14:27 build
+#10 DONE 0.3s
+
+#11 [stage-1 5/6] RUN npm install serve -g
+#11 6.549 
+#11 6.549 added 88 packages in 6s
+#11 6.549 
+#11 6.549 24 packages are looking for funding
+#11 6.549   run `npm fund` for details
+#11 6.551 npm notice
+#11 6.551 npm notice New major version of npm available! 10.8.2 -> 11.1.0
+#11 6.551 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.1.0
+#11 6.551 npm notice To update run: npm install -g npm@11.1.0
+#11 6.551 npm notice
+#11 DONE 6.6s
+
+#12 [stage-1 6/6] RUN which serve
+#12 0.441 /usr/local/bin/serve
+#12 DONE 0.5s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.2s done
+#13 writing image sha256:e20f2097721e77cf9d3d1ac3f3bd42a59d7cd25aa335661d89a23da60807e77d done
+#13 naming to docker.io/library/frontend2 done
+#13 DONE 0.2s
