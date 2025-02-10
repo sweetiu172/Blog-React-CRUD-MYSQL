@@ -1,102 +1,108 @@
-#0 building with "desktop-linux" instance using docker driver
+#0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 177B done
+#1 transferring dockerfile: 200B done
 #1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/node:18
-#2 DONE 1.1s
+#2 DONE 4.0s
 
 #3 [internal] load .dockerignore
 #3 transferring context: 61B done
 #3 DONE 0.0s
 
-#4 [internal] load build context
-#4 transferring context: 1.10kB done
+#4 [1/7] FROM docker.io/library/node:18@sha256:f12d34408955b2081f82078e8f96c3299ca0f38d11e76086cb9b9b1b669977e4
 #4 DONE 0.0s
 
-#5 [1/5] FROM docker.io/library/node:18@sha256:720eeea325b3da50e108ba34dde0fd69feeb3c59485199c5e22b0ea49a792aa5
-#5 resolve docker.io/library/node:18@sha256:720eeea325b3da50e108ba34dde0fd69feeb3c59485199c5e22b0ea49a792aa5 0.0s done
-#5 CACHED
+#5 [internal] load build context
+#5 transferring context: 1.12kB 0.0s done
+#5 DONE 0.0s
 
-#6 [2/5] COPY . .
-#6 DONE 0.1s
+#6 [2/7] WORKDIR /app
+#6 CACHED
 
-#7 [3/5] RUN yarn && yarn build
-#7 0.560 yarn install v1.22.22
-#7 0.653 [1/4] Resolving packages...
-#7 1.174 [2/4] Fetching packages...
-#7 35.06 [3/4] Linking dependencies...
-#7 35.06 warning " > @testing-library/user-event@12.8.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
-#7 35.06 warning "react-scripts > @typescript-eslint/eslint-plugin > tsutils@3.21.0" has unmet peer dependency "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta".
-#7 52.32 [4/4] Building fresh packages...
-#7 54.37 Done in 53.81s.
-#7 54.64 yarn run v1.22.22
-#7 54.68 $ export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build
-#7 56.06 Creating an optimized production build...
-#7 59.90 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
-#7 59.90 "@babel/plugin-proposal-private-property-in-object" package without
-#7 59.90 declaring it in its dependencies. This is currently working because
-#7 59.90 "@babel/plugin-proposal-private-property-in-object" is already in your
-#7 59.90 node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
-#7 59.90 
-#7 59.90 babel-preset-react-app is part of the create-react-app project, [1mwhich
-#7 59.90 is not maintianed anymore[0;33m. It is thus unlikely that this bug will
-#7 59.90 ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
-#7 59.90 your devDependencies to work around this error. This will make this message
-#7 59.90 go away.[0m
-#7 59.90   
-#7 62.65 Compiled successfully.
-#7 62.65 
-#7 62.65 File sizes after gzip:
-#7 62.65 
-#7 62.66   56.1 KB  build/static/js/2.64bbef6a.chunk.js
-#7 62.66   1.05 KB  build/static/js/main.48ea3ddf.chunk.js
-#7 62.66   815 B    build/static/css/main.16c488e5.chunk.css
-#7 62.66   773 B    build/static/js/runtime-main.67edd9e0.js
-#7 62.66 
-#7 62.66 The project was built assuming it is hosted at /.
-#7 62.66 You can control this with the homepage field in your package.json.
-#7 62.66 
-#7 62.66 The build folder is ready to be deployed.
-#7 62.66 You may serve it with a static server:
-#7 62.66 
-#7 62.66   yarn global add serve
-#7 62.66   serve -s build
-#7 62.66 
-#7 62.66 Find out more about deployment here:
-#7 62.66 
-#7 62.66   https://cra.link/deployment
-#7 62.66 
-#7 62.70 Done in 8.07s.
-#7 DONE 63.1s
+#7 [3/7] COPY . .
+#7 DONE 0.0s
 
-#8 [4/5] RUN npm install serve -g
-#8 6.286 
-#8 6.286 added 88 packages in 5s
-#8 6.286 
-#8 6.286 24 packages are looking for funding
-#8 6.286   run `npm fund` for details
-#8 6.288 npm notice
-#8 6.288 npm notice New major version of npm available! 10.8.2 -> 11.0.0
-#8 6.288 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.0.0
-#8 6.288 npm notice To update run: npm install -g npm@11.0.0
-#8 6.288 npm notice
-#8 DONE 6.5s
+#8 [4/7] RUN ls -l
+#8 0.222 total 584
+#8 0.222 -rwxrwxrwx 1 root root    161 Feb 10 11:52 Dockerfile
+#8 0.222 -rwxrwxrwx 1 root root    232 Feb 10 11:54 docker.log
+#8 0.222 -rwxrwxrwx 1 root root   1004 Feb 10 11:21 package.json
+#8 0.222 drwxrwxrwx 2 root root   4096 Jan 11 09:01 public
+#8 0.222 drwxrwxrwx 3 root root   4096 Jan 11 09:01 src
+#8 0.222 -rwxrwxrwx 1 root root 577347 Feb 10 11:21 yarn.lock
+#8 DONE 0.2s
 
-#9 [5/5] RUN which serve
-#9 0.429 /usr/local/bin/serve
-#9 DONE 0.5s
+#9 [5/7] RUN yarn && yarn build
+#9 0.625 yarn install v1.22.22
+#9 0.680 [1/4] Resolving packages...
+#9 0.914 [2/4] Fetching packages...
+#9 22.87 [3/4] Linking dependencies...
+#9 22.87 warning " > @testing-library/user-event@12.8.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+#9 22.87 warning "react-scripts > @typescript-eslint/eslint-plugin > tsutils@3.21.0" has unmet peer dependency "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta".
+#9 31.06 [4/4] Building fresh packages...
+#9 31.99 Done in 31.37s.
+#9 32.13 yarn run v1.22.22
+#9 32.15 $ export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build
+#9 32.97 Creating an optimized production build...
+#9 35.78 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
+#9 35.78 "@babel/plugin-proposal-private-property-in-object" package without
+#9 35.78 declaring it in its dependencies. This is currently working because
+#9 35.78 "@babel/plugin-proposal-private-property-in-object" is already in your
+#9 35.78 node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+#9 35.78 
+#9 35.78 babel-preset-react-app is part of the create-react-app project, [1mwhich
+#9 35.78 is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+#9 35.78 ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+#9 35.78 your devDependencies to work around this error. This will make this message
+#9 35.78 go away.[0m
+#9 35.78   
+#9 36.89 Compiled successfully.
+#9 36.89 
+#9 36.89 File sizes after gzip:
+#9 36.89 
+#9 36.90   56.1 KB  build/static/js/2.64bbef6a.chunk.js
+#9 36.90   1.05 KB  build/static/js/main.48ea3ddf.chunk.js
+#9 36.90   815 B    build/static/css/main.16c488e5.chunk.css
+#9 36.90   773 B    build/static/js/runtime-main.67edd9e0.js
+#9 36.90 
+#9 36.90 The project was built assuming it is hosted at /.
+#9 36.90 You can control this with the homepage field in your package.json.
+#9 36.90 
+#9 36.90 The build folder is ready to be deployed.
+#9 36.90 You may serve it with a static server:
+#9 36.90 
+#9 36.90   yarn global add serve
+#9 36.90   serve -s build
+#9 36.90 
+#9 36.90 Find out more about deployment here:
+#9 36.90 
+#9 36.90   https://cra.link/deployment
+#9 36.90 
+#9 36.92 Done in 4.80s.
+#9 DONE 37.2s
 
-#10 exporting to image
-#10 exporting layers
-#10 exporting layers 23.4s done
-#10 exporting manifest sha256:535a95a8da28cd4f02e2d8d4ce84d138e4cf499a77ee446b58eec4001cbc9bb7 0.0s done
-#10 exporting config sha256:b70904d7a124f80377872546b117f1477932f8da0fa654c1522a0e301198a4a6 0.0s done
-#10 exporting attestation manifest sha256:99fd58a1ca7ea3de259d5d569550eafeb1a210238988e84215b5ed0e2f747e3c 0.0s done
-#10 exporting manifest list sha256:28abb70ec488778bd6fe237c247b3f581827eea65a2c36f1f7253a868beaa1ca
-#10 exporting manifest list sha256:28abb70ec488778bd6fe237c247b3f581827eea65a2c36f1f7253a868beaa1ca 0.0s done
-#10 naming to docker.io/library/frontend:v1 done
-#10 unpacking to docker.io/library/frontend:v1
-#10 unpacking to docker.io/library/frontend:v1 20.0s done
-#10 DONE 43.6s
+#10 [6/7] RUN npm install serve -g
+#10 5.984 
+#10 5.984 added 88 packages in 6s
+#10 5.984 
+#10 5.984 24 packages are looking for funding
+#10 5.984   run `npm fund` for details
+#10 5.985 npm notice
+#10 5.985 npm notice New major version of npm available! 10.8.2 -> 11.1.0
+#10 5.985 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.1.0
+#10 5.985 npm notice To update run: npm install -g npm@11.1.0
+#10 5.985 npm notice
+#10 DONE 6.1s
+
+#11 [7/7] RUN which serve
+#11 0.498 /usr/local/bin/serve
+#11 DONE 0.5s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 4.4s done
+#12 writing image sha256:ff156fa06f09236e283d75a2d5c2164baacbc9b59c682ed428c7d9cf6c073155 done
+#12 naming to docker.io/library/frontend done
+#12 DONE 4.4s
