@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+COPY . .
+
+RUN apt update && apt install npm -y
+RUN npm install --global yarn
+RUN yarn
+RUN apt install mysql-server -y
+#RUN echo "[mysqld]\nbind-address = 0.0.0.0" | tee -a /etc/mysql/my.cnf
+#RUN service mysql restart
+EXPOSE 3306
+CMD ["yarn", "start"]
